@@ -41,11 +41,10 @@ var app = {
                             'Device UUID: '     + device.uuid     + '<br />' +
                             'Device Version: '  + device.version  + '<br />';
                        
-        navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass); 
-        navigator.geolocation.getCurrentPosition(app.onSuccessGeo, app.onErrorGeo);
-                      
-        app.checkConnection();                    
-		app.receivedEvent('deviceready');
+        //navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass); 
+        //navigator.geolocation.getCurrentPosition(app.onSuccessGeo, app.onErrorGeo);            
+        //app.checkConnection();                    
+		//app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
