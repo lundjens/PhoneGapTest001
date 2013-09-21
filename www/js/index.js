@@ -42,7 +42,7 @@ var app = {
                             'Device Version: '  + device.version  + '<br />';
                        
         navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass); 
-        navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
+        navigator.geolocation.getCurrentPosition(app.onSuccessGeo, app.onErrorGeo);
                       
         app.checkConnection();                    
 		app.receivedEvent('deviceready');
