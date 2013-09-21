@@ -33,11 +33,11 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        //navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass); 
-        //navigator.geolocation.getCurrentPosition(app.onSuccessGeo, app.onErrorGeo);            
-        //app.checkConnection();                    
-		app.receivedEvent('deviceready');
-		//app.getDeviceInfo();
+        app.receivedEvent('deviceready');
+        navigator.compass.getCurrentHeading(onSuccessCompass, onErrorCompass); 
+        navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);            
+        app.checkConnection();                    
+		app.getDeviceInfo();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
