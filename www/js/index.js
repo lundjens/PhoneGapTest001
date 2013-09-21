@@ -37,7 +37,7 @@ var app = {
         //navigator.geolocation.getCurrentPosition(app.onSuccessGeo, app.onErrorGeo);            
         //app.checkConnection();                    
 		app.receivedEvent('deviceready');
-		app.getDeviceInfo();
+		//app.getDeviceInfo();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -96,6 +96,5 @@ var app = {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
-
 
 };
