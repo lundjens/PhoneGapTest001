@@ -71,8 +71,10 @@ var app = {
             states[Connection.CELL]     = 'Cell generic connection';
             states[Connection.NONE]     = 'No network connection';
 
-            var element = document.getElementById('networkinfo');
-            element.innerHTML = 'Connection type: ' + states[networkState]'<br />';
+            alert('Connection type: ' + states[networkState]);
+
+            //var element = document.getElementById('networkinfo');
+            //selement.innerHTML = 'Connection type: ' + states[networkState]'<br />';
      },
      onSuccessCompass: function(heading) {
         var element = document.getElementById('compassinfo');
