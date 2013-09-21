@@ -33,18 +33,11 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        
-        var element = document.getElementById('deviceProperties');
-        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
-                            'Device Cordova: '  + device.cordova  + '<br />' +
-                            'Device Platform: ' + device.platform + '<br />' +
-                            'Device UUID: '     + device.uuid     + '<br />' +
-                            'Device Version: '  + device.version  + '<br />';
-                       
         //navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass); 
         //navigator.geolocation.getCurrentPosition(app.onSuccessGeo, app.onErrorGeo);            
         //app.checkConnection();                    
-		//app.receivedEvent('deviceready');
+		app.receivedEvent('deviceready');
+		app.getDeviceInfo();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -56,6 +49,14 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    getDeviceInfo: function() {
+        var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
     },
     checkConnection: function() {
             var networkState = navigator.connection.type;
