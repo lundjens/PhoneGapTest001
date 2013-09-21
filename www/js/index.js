@@ -36,7 +36,15 @@ var app = {
         //navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass); 
         //navigator.geolocation.getCurrentPosition(app.onSuccessGeo, app.onErrorGeo);            
         //app.checkConnection();                    
-		app.getDeviceInfo();
+		//app.getDeviceInfo();
+		
+		var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+                            
 		app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
