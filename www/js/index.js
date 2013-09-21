@@ -41,8 +41,10 @@ var app = {
                             'Device UUID: '     + device.uuid     + '<br />' +
                             'Device Version: '  + device.version  + '<br />';
                        
-        navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass);               
-        //app.checkConnection();                    
+        navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass); 
+        navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
+                      
+        app.checkConnection();                    
 		app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -72,10 +74,27 @@ var app = {
             alert('Connection type: ' + states[networkState]);
      },
      onSuccessCompass: function(heading) {
-        alert('Heading: ' + heading.magneticHeading);
+        var element = document.getElementById('compassinfo');
+        element.innerHTML = 'Heading: ' + heading.magneticHeading '<br />';
      },
      onErrorCompass: function(compassError) {
         alert('Compass Error: ' + compassError.code);
-     }
+     },
+     onSuccessGeo: function(position) {
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+                            'Longitude: '          + position.coords.longitude             + '<br />' +
+                            'Altitude: '           + position.coords.altitude              + '<br />' +
+                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
+                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+                            'Heading: '            + position.coords.heading               + '<br />' +
+                            'Speed: '              + position.coords.speed                 + '<br />' +
+                            'Timestamp: '          + position.timestamp                    + '<br />';
+    },
+    onErrorGeo: function(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
 
 };
