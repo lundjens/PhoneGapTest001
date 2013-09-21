@@ -41,7 +41,8 @@ var app = {
                             'Device UUID: '     + device.uuid     + '<br />' +
                             'Device Version: '  + device.version  + '<br />';
                        
-        app.checkConnection();                    
+        navigator.compass.getCurrentHeading(app.onSuccessCompass, app.onErrorCompass);               
+        //app.checkConnection();                    
 		app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -69,5 +70,12 @@ var app = {
             states[Connection.NONE]     = 'No network connection';
 
             alert('Connection type: ' + states[networkState]);
+     },
+     onSuccessCompass: function(heading) {
+        alert('Heading: ' + heading.magneticHeading);
+     },
+     onErrorCompass: function(compassError) {
+        alert('Compass Error: ' + compassError.code);
      }
+
 };
