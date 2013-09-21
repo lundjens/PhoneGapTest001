@@ -54,9 +54,8 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
-    
-    function checkConnection() {
+    },
+    checkConnection: function() {
             var networkState = navigator.connection.type;
 
             var states = {};
